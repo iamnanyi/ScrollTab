@@ -13,7 +13,7 @@
 @protocol STScrollTabViewDelegate <NSObject>
 
 @optional
-- (void)segmentView:(STScrollTabView *)scrollTabView didSelectedPage:(NSUInteger)index;
+- (void)scrollTabView:(STScrollTabView *)scrollTabView didSelectedPage:(NSUInteger)index;
 
 @end
 
@@ -23,7 +23,8 @@
 @property (nonatomic, weak)id<STScrollTabViewDelegate> delegate;
 
 // 设置索引
-- (void)setSegmentIndex:(CGFloat)index;
+- (void)setTabIndex:(CGFloat)index;
 - (void)buttonDidClick:(UIButton *)sender;
+- (void)scrollToCenterWithIndex:(NSUInteger)index;
 
 @end

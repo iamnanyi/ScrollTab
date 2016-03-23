@@ -46,16 +46,10 @@
                                         <state key="normal" title="头条">
                                             <color key="titleColor" red="0.90196078431372551" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
-                                        <connections>
-                                            <action selector="firstButtonClicked:" destination="oyg-Kj-JvJ" eventType="touchUpInside" id="4BJ-6o-DrD"/>
-                                        </connections>
                                     </button>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZD-tt-jvU" customClass="STScrollTabView">
                                         <rect key="frame" x="80" y="0.0" width="520" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="oyg-Kj-JvJ" id="lnM-ik-cdA"/>
-                                        </connections>
                                     </scrollView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

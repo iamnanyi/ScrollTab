@@ -13,13 +13,13 @@
 
 // 选择了某个按钮
 - (void)buttonDidClick:(UIButton *)sender {
-    if ([self.delegate respondsToSelector:@selector(segmentView:didSelectedPage:)]) {
-        [self.delegate segmentView:self didSelectedPage:[self.buttonArray indexOfObject:sender]];
+    if ([self.delegate respondsToSelector:@selector(scrollTabView:didSelectedPage:)]) {
+        [self.delegate scrollTabView:self didSelectedPage:[self.buttonArray indexOfObject:sender]];
     }
 }
 
 // 设置索引
-- (void)setSegmentIndex:(CGFloat)index {
+- (void)setTabIndex:(CGFloat)index {
     NSInteger firstIndex = (NSInteger)index;
     CGFloat firstScale = index - firstIndex;
     NSInteger secondIndex = -1;
@@ -40,6 +40,19 @@
             button.titleLabel.font = [UIFont systemFontOfSize:13];
         }
     }];
+}
+
+- (void)scrollToCenterWithIndex:(NSUInteger)index {
+    if (index > 2 && index < _buttonArray.count - 2) {
+        UIButton *button = _buttonArray[2];
+        CGPoint centerPoint = [self convertPoint:button.center toView:_buttonArray[index]];
+        [self setContentOffset:CGPointMake(-centerPoint.x, 0) animated:YES];
+    } else if (index <= 2) {
+        [self setContentOffset:CGPointZero animated:YES];
+    } else {
+        CGPoint bottomOffset = CGPointMake(self.contentSize.width - self.bounds.size.width, 0);
+        [self setContentOffset:bottomOffset animated:YES];
+    }
 }
 
 - (NSArray *)buttonArray {

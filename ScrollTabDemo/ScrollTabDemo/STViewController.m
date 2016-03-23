@@ -22,7 +22,6 @@
 
 - (void)createView;
 - (UIColor *)randomColor;
-- (void)scrollToCenterWithIndex:(NSUInteger)index;
 
 @end
 
@@ -39,16 +38,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _scrollTabView.delegate = self;
     [self createView];
+    _scrollTabView.delegate = self;
     _scrollTabView.buttonArray = _buttonArray;
-}
-
-#pragma mark - Event
-
-- (IBAction)firstButtonClicked:(id)sender {
-    [_firstButton setTitleColor:FONT_COLOR forState:UIControlStateNormal];
-    [_contentScrollView setContentOffset:CGPointZero animated:NO];
+    [_firstButton addTarget:_scrollTabView action:@selector(buttonDidClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - Custom Function
@@ -130,26 +123,13 @@
     return [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
 }
 
-- (void)scrollToCenterWithIndex:(NSUInteger)index {
-    if (index > 2 && index < _buttonArray.count - 2) {
-        UIButton *button = _buttonArray[2];
-        CGPoint centerPoint = [_scrollTabView convertPoint:button.center toView:_buttonArray[index]];
-        NSLog(@"%@", @(centerPoint.x));
-        [_scrollTabView setContentOffset:CGPointMake(-centerPoint.x, 0) animated:YES];
-    } else if (index <= 2) {
-        [_scrollTabView setContentOffset:CGPointZero animated:YES];
-    } else {
-        CGPoint bottomOffset = CGPointMake(_scrollTabView.contentSize.width - _scrollTabView.bounds.size.width, 0);
-        [_scrollTabView setContentOffset:bottomOffset animated:YES];
-    }
-}
-
 #pragma mark - STScrollTabViewDelegate
 
-- (void)segmentView:(STScrollTabView *)scrollTabView didSelectedPage:(NSUInteger)index {
+- (void)scrollTabView:(STScrollTabView *)scrollTabView didSelectedPage:(NSUInteger)index {
     [_contentScrollView setContentOffset:CGPointMake(index * SCREEN_WIDTH, 0)];
-    [self scrollToCenterWithIndex:index];
-    [_firstButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    if (index > 0) {
+        [_scrollTabView scrollToCenterWithIndex:index];
+    }
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -157,14 +137,14 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView == _contentScrollView) {
         CGFloat x = scrollView.contentOffset.x / SCREEN_WIDTH;
-        [_scrollTabView setSegmentIndex:x];
+        [_scrollTabView setTabIndex:x];
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     if (scrollView == _contentScrollView) {
         NSInteger index = scrollView.contentOffset.x / SCREEN_WIDTH;
-        [self scrollToCenterWithIndex:index];
+        [_scrollTabView scrollToCenterWithIndex:index];
     }
 }
 
