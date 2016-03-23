@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gFi-Jt-SLX">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="ObP-tD-cVs">
+            <objects>
+                <navigationController id="gFi-Jt-SLX" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="j3q-EQ-CSv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="oyg-Kj-JvJ" kind="relationship" relationship="rootViewController" id="2Jp-zB-abu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OE4-Lv-5aw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="466" y="546"/>
+        </scene>
+        <!--首页-->
+        <scene sceneID="HUu-TK-dK9">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="oyg-Kj-JvJ" customClass="STViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jZ1-Kw-OyW"/>
+                        <viewControllerLayoutGuide type="bottom" id="zzz-oi-i2j"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b2m-7E-7l0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bzd-Ch-1CB">
+                                <rect key="frame" x="0.0" y="64" width="600" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6C8-si-aJN">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="VRN-ia-KpM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="头条">
+                                            <color key="titleColor" red="0.90196078431372551" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="firstButtonClicked:" destination="oyg-Kj-JvJ" eventType="touchUpInside" id="4BJ-6o-DrD"/>
+                                        </connections>
+                                    </button>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZD-tt-jvU" customClass="STScrollTabView">
+                                        <rect key="frame" x="80" y="0.0" width="520" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="oyg-Kj-JvJ" id="lnM-ik-cdA"/>
+                                        </connections>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="SZD-tt-jvU" firstAttribute="top" secondItem="Bzd-Ch-1CB" secondAttribute="top" id="3Bf-hf-vjG"/>
+                                    <constraint firstAttribute="bottom" secondItem="SZD-tt-jvU" secondAttribute="bottom" id="DUa-6t-u5N"/>
+                                    <constraint firstItem="6C8-si-aJN" firstAttribute="top" secondItem="Bzd-Ch-1CB" secondAttribute="top" id="FT8-fZ-AsK"/>
+                                    <constraint firstItem="SZD-tt-jvU" firstAttribute="leading" secondItem="6C8-si-aJN" secondAttribute="trailing" id="Uvt-gf-byQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="SZD-tt-jvU" secondAttribute="trailing" id="fSS-hh-BcA"/>
+                                    <constraint firstAttribute="height" constant="30" id="iVQ-7f-v2g"/>
+                                    <constraint firstAttribute="bottom" secondItem="6C8-si-aJN" secondAttribute="bottom" id="q7c-Bl-ZiO"/>
+                                    <constraint firstItem="6C8-si-aJN" firstAttribute="leading" secondItem="Bzd-Ch-1CB" secondAttribute="leading" id="x1r-bN-ziL"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uw0-RL-KHS">
+                                <rect key="frame" x="0.0" y="94" width="600" height="506"/>
+                                <connections>
+                                    <outlet property="delegate" destination="oyg-Kj-JvJ" id="Xg4-vt-ufh"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Bzd-Ch-1CB" firstAttribute="leading" secondItem="b2m-7E-7l0" secondAttribute="leading" id="4LH-UO-giw"/>
+                            <constraint firstItem="Uw0-RL-KHS" firstAttribute="top" secondItem="Bzd-Ch-1CB" secondAttribute="bottom" id="SSo-Du-c0a"/>
+                            <constraint firstAttribute="trailing" secondItem="Uw0-RL-KHS" secondAttribute="trailing" id="V71-LJ-C0h"/>
+                            <constraint firstItem="zzz-oi-i2j" firstAttribute="top" secondItem="Uw0-RL-KHS" secondAttribute="bottom" id="aHO-zq-2Zq"/>
+                            <constraint firstAttribute="trailing" secondItem="Bzd-Ch-1CB" secondAttribute="trailing" id="cPD-lP-Bwu"/>
+                            <constraint firstItem="Bzd-Ch-1CB" firstAttribute="top" secondItem="jZ1-Kw-OyW" secondAttribute="bottom" id="nEZ-Sk-QGY"/>
+                            <constraint firstItem="Uw0-RL-KHS" firstAttribute="leading" secondItem="b2m-7E-7l0" secondAttribute="leading" id="pAg-QC-MeX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="首页" id="m2R-CO-ETq"/>
+                    <connections>
+                        <outlet property="contentScrollView" destination="Uw0-RL-KHS" id="hbN-pN-plN"/>
+                        <outlet property="firstButton" destination="6C8-si-aJN" id="HhF-TV-Mr6"/>
+                        <outlet property="scrollTabView" destination="SZD-tt-jvU" id="vQ4-9H-16D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dxg-vZ-RC7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1229" y="546"/>
+        </scene>
+    </scenes>
+</document>
