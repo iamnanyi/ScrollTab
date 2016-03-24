@@ -28,18 +28,19 @@
     if (firstScale > 0) {
         secondIndex = firstIndex + 1;
     }
+    NSLog(@"firstIndex=%@, firstScale=%@, secondIndex=%@", @(firstIndex), @(firstScale), @(secondIndex));
     [self.buttonArray enumerateObjectsUsingBlock:^(UIButton *button, NSUInteger idx, BOOL * __nonnull stop) {
         if (idx == firstIndex) {
             UIColor *color = RGBA(230 - (firstScale * 230), 153 - (firstScale * 153), 153 - (firstScale * 153), 1);
             [button setTitleColor:color forState:UIControlStateNormal];
-            button.titleLabel.font = [UIFont systemFontOfSize:17 - (firstScale * 4)];
+            button.transform = CGAffineTransformMakeScale(1.2 - firstScale * 0.1, 1.2 - firstScale * 0.1);
         } else if (idx == secondIndex) {
             UIColor *color = RGBA(0 + (firstScale * 230), 0 + (firstScale * 153), 0 + (153 * firstScale), 1);
             [button setTitleColor:color forState:UIControlStateNormal];
-            button.titleLabel.font = [UIFont systemFontOfSize:13 + (firstScale * 4)];
+            button.transform = CGAffineTransformMakeScale(1.0 + firstScale * 0.2, 1.0 + firstScale * 0.2);
         } else {
             [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            button.titleLabel.font = [UIFont systemFontOfSize:13];
+            button.transform = CGAffineTransformMakeScale(0.8, 0.8);
         }
     }];
 }

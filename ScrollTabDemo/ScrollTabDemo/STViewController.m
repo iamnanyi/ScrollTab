@@ -75,7 +75,8 @@
         [button setTitle:title forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         button.backgroundColor = [UIColor clearColor];
-        button.titleLabel.font = [UIFont systemFontOfSize:13];
+        button.titleLabel.font = [UIFont systemFontOfSize:17];
+        button.transform = CGAffineTransformMakeScale(0.8, 0.8);
         button.tag = i;
         [button addTarget:_scrollTabView action:@selector(buttonDidClick:) forControlEvents:UIControlEventTouchUpInside];
         [_scrollTabView addSubview:button];
