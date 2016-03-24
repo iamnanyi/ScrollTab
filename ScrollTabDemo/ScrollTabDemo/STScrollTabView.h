@@ -20,7 +20,7 @@
 @interface STScrollTabView : UIScrollView
 
 @property (nonatomic, strong) NSArray *buttonArray;
-@property (nonatomic, weak)id<STScrollTabViewDelegate> delegate;
+@property (nonatomic, weak) id <STScrollTabViewDelegate> scrollTabViewDelegate;
 
 // 设置索引
 - (void)setTabIndex:(CGFloat)index;

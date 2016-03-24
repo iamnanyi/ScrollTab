@@ -11,10 +11,12 @@
 
 @implementation STScrollTabView
 
+@synthesize delegate;
+
 // 选择了某个按钮
 - (void)buttonDidClick:(UIButton *)sender {
-    if ([self.delegate respondsToSelector:@selector(scrollTabView:didSelectedPage:)]) {
-        [self.delegate scrollTabView:self didSelectedPage:[self.buttonArray indexOfObject:sender]];
+    if ([self.scrollTabViewDelegate respondsToSelector:@selector(scrollTabView:didSelectedPage:)]) {
+        [self.scrollTabViewDelegate scrollTabView:self didSelectedPage:[self.buttonArray indexOfObject:sender]];
     }
 }
 
@@ -43,9 +45,9 @@
 }
 
 - (void)scrollToCenterWithIndex:(NSUInteger)index {
-    if (index > 2 && index < _buttonArray.count - 2) {
-        UIButton *button = _buttonArray[2];
-        CGPoint centerPoint = [self convertPoint:button.center toView:_buttonArray[index]];
+    if (index > 2 && index < self.buttonArray.count - 2) {
+        UIButton *button = self.buttonArray[2];
+        CGPoint centerPoint = [self convertPoint:button.center toView:self.buttonArray[index]];
         [self setContentOffset:CGPointMake(-centerPoint.x, 0) animated:YES];
     } else if (index <= 2) {
         [self setContentOffset:CGPointZero animated:YES];

@@ -39,7 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createView];
-    _scrollTabView.delegate = self;
+    _scrollTabView.scrollTabViewDelegate = self;
     _scrollTabView.buttonArray = _buttonArray;
     [_firstButton addTarget:_scrollTabView action:@selector(buttonDidClick:) forControlEvents:UIControlEventTouchUpInside];
 }
