@@ -28,7 +28,6 @@
     if (firstScale > 0) {
         secondIndex = firstIndex + 1;
     }
-    NSLog(@"firstIndex=%@, firstScale=%@, secondIndex=%@", @(firstIndex), @(firstScale), @(secondIndex));
     [self.buttonArray enumerateObjectsUsingBlock:^(UIButton *button, NSUInteger idx, BOOL * __nonnull stop) {
         if (idx == firstIndex) {
             UIColor *color = RGBA(230 - (firstScale * 230), 153 - (firstScale * 153), 153 - (firstScale * 153), 1);
@@ -47,9 +46,7 @@
 
 - (void)scrollToCenterWithIndex:(NSUInteger)index {
     if (index > 2 && index < self.buttonArray.count - 2) {
-        UIButton *button = self.buttonArray[2];
-        CGPoint centerPoint = [self convertPoint:button.center toView:self.buttonArray[index]];
-        [self setContentOffset:CGPointMake(-centerPoint.x, 0) animated:YES];
+        [self setContentOffset:CGPointMake((index - 2) * 80, 0) animated:YES];
     } else if (index <= 2) {
         [self setContentOffset:CGPointZero animated:YES];
     } else {
