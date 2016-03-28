@@ -16,9 +16,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *firstButton;
 @property (weak, nonatomic) IBOutlet STScrollTabView *scrollTabView;
 @property (weak, nonatomic) IBOutlet UIScrollView *contentScrollView;
-@property (nonatomic, strong) NSArray *buttonTitleArray;
-@property (nonatomic, copy) NSMutableArray *buttonArray;
-@property (nonatomic, copy) NSMutableArray *viewArray;
+@property (nonatomic, copy) NSArray *buttonTitleArray;
+@property (nonatomic, strong) NSMutableArray *buttonArray;
+@property (nonatomic, strong) NSMutableArray *viewArray;
 
 - (void)createView;
 - (UIColor *)randomColor;

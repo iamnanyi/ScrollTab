@@ -19,7 +19,7 @@
 
 @interface STScrollTabView : UIScrollView
 
-@property (nonatomic, strong) NSArray *buttonArray;
+@property (nonatomic, copy) NSArray *buttonArray;
 @property (nonatomic, weak) id <STScrollTabViewDelegate> scrollTabViewDelegate;
 
 // 设置索引
